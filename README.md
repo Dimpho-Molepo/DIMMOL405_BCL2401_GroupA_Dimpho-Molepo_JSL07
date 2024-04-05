@@ -8,7 +8,7 @@ This project is a simple web application that allows users to create a personali
 
 ## Getting Started
 
-1. **Clone the Repository:** Use the provided [link](https://github.com/CodeSpace-Academy/Module_7_StudentNo_Classcode_Group_Name-Surname_JSL07) to clone the repository and start working in a local environment.
+1. **Clone the Repository:** Used the provided [link](https://github.com/CodeSpace-Academy/Module_7_StudentNo_Classcode_Group_Name-Surname_JSL07) to clone the repository and start working in a local environment.
 2. **Code:** Addressed each challenge following the project objectives and features.
 3. **Commit Changes:** Regularly commit the work with descriptive messages.
 4. **Push Updates:** Upload the commits to GitHub, ensuring your repository reflects the latest changes.

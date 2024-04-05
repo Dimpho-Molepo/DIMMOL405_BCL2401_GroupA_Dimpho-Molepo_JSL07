@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <p>${personalMessage}</p>
     `;
 
-    // Download generated cerificate as a PDF file
+    // Bonus Feature 🟧: Make a PDF from the HTML
+    // Downloads the generated cerificate as a PDF file
     downloadCertificate.innerText = `Download Certificate`;
     downloadCertificate.addEventListener('click', () => {
       var certificateCustomizer = {
@@ -50,12 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
       };  
   
-      html2pdf()
-      .from(certificateContent)
-      .set(certificateCustomizer)
-      .save();
+      html2pdf().from(certificateContent).set(certificateCustomizer).save();
     });
-    modal.appendChild(downloadCertificate);
+    modal.appendChild(downloadCertificate); // Adds the download button to the modal window
     
     //  Display the modal
     modal.style.display = 'block';
