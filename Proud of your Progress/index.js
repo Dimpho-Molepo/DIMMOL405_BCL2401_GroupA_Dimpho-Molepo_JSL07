@@ -6,7 +6,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeModal = document.querySelector('.close');
   const downloadCertificate = document.createElement('button');
   downloadCertificate.classList.add("download-btn");
+  let studentName;
+  let courseName;
+
+  // Bonus Feature 🟧: Make a PDF from the HTML
+  // Downloads the generated cerificate as a PDF file
+  downloadCertificate.innerText = `Download Certificate`;
+  downloadCertificate.addEventListener('click', () => {
+    const certificateCustomizer = {
+      margin:       1,
+      filename:     `${studentName}'s ${courseName} certificate.pdf`,
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+    };  
   
+    html2pdf().from(certificateContent).set(certificateCustomizer).save();
+  });
+  modal.appendChild(downloadCertificate); // Adds the download button to the modal window  
+
   // Hide the modal initially
   modal.style.display = 'none';
   
@@ -18,9 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const personalMessageInput = document.getElementById('personalMessage');
     const courseNameInput = document.getElementById('courseName'); 
   
-    const studentName = studentNameInput.value;
+    studentName = studentNameInput.value;
     const personalMessage = personalMessageInput.value;
-    const courseName = courseNameInput ? courseNameInput.value : "a course"; // Fallback to "a course" if no input
+    courseName = courseNameInput ? courseNameInput.value : "a course"; // Fallback to "a course" if no input
   
     if (studentName.trim() === '' || personalMessage.trim() === '') {
       alert('Please fill in all fields');
@@ -40,22 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
       <p>${personalMessage}</p>
     `;
 
-    // Bonus Feature 🟧: Make a PDF from the HTML
-    // Downloads the generated cerificate as a PDF file
-    downloadCertificate.innerText = `Download Certificate`;
-    downloadCertificate.addEventListener('click', () => {
-      var certificateCustomizer = {
-        margin:       1,
-        filename:     `${studentName}'s ${courseName} certificate.pdf`,
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
-      };  
-  
-      html2pdf().from(certificateContent).set(certificateCustomizer).save();
-    });
-    modal.appendChild(downloadCertificate); // Adds the download button to the modal window
-    
     //  Display the modal
     modal.style.display = 'block';
 
@@ -68,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //  🚨 Close the modal when the close button is clicked
   closeModal.addEventListener('click', () => {
     modal.style.display = 'none';
-    modal.removeChild(downloadCertificate);
   });
 });
   
