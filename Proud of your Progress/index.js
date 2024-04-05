@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const certificateContent = document.getElementById('certificateContent');
   const closeModal = document.querySelector('.close');
   const downloadCertificate = document.createElement('button');
+  downloadCertificate.classList.add("download-btn");
   
   // Hide the modal initially
   modal.style.display = 'none';
